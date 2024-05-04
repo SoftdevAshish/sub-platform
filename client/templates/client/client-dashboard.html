@@ -1,0 +1,24 @@
+{% extends 'client/layouts.html' %}
+{% block title %}
+    Client Dashboard
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-4 py-5  my-5  rounded shadow text-center">
+               Welcome {{ user.first_name }}
+            </div>
+        </div>
+    </div>
+     <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-4 py-5  my-1  rounded shadow text-center">
+               <h4>Subscription Plan</h4><br>
+                <p class="h5">
+                    {{ SubPlan }}
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

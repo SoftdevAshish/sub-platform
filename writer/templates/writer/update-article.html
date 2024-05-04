@@ -1,0 +1,22 @@
+{% extends 'writer/layouts.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Update Article
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6 py-5  my-5  rounded shadow">
+                <h3>Write Article</h3>
+                <form method="post" autocomplete="off">
+                    {% csrf_token %}
+                    {{ UpdateArticleForm|crispy }}
+                    <div class="text-end">
+                        <input type="submit" class="btn btn-outline-success" value="Update Article">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

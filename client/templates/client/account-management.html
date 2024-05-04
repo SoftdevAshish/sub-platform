@@ -1,0 +1,85 @@
+{% extends 'client/layouts.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Client Dashboard
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-4 py-5  my-5  rounded shadow ">
+                <h2>Account Details</h2>
+                <p>You may update your account details bellow:</p>
+                <br>
+                <form method="post" autocomplete="off">
+                    {% csrf_token %}
+                    {{ UpdateUserForm|crispy }}
+                    <div class="text-center">
+                        <input type="submit" class="btn btn-outline-success btn-lg" value="Update Account Details">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    {% if SubID is not None %}
+        {#        Delete Subscription #}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-4 py-5  my-1  rounded shadow text-center">
+                    <h4>Delete Your Subscription</h4><br>
+                    <p class="h6">
+                        Permanently delete your subscription by clicking the button bellow:
+                    </p>
+                    <div class="text-end">
+                        <a id="deleteButton" href="{% url 'delete-subscription' SubID %}"
+                           class="btn btn-outline-danger btn-lg">Delete
+                            Subscription</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {#    Update Subscription    #}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-4 py-5  my-1  rounded shadow text-center">
+                    <h4>Update Your Subscription</h4><br>
+                    <p class="h6">
+                        Upgrade and downgrade your subscription by clicking the button bellow:
+                    </p>
+                    <div class="text-end">
+                        <a id="updateButton" href="{% url 'update-subscription' SubID %}"
+                           class="btn btn-outline-primary btn-lg">Update
+                            Subscription</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-4 py-5  my-5  rounded shadow text-center">
+                    <h2>Browse Subscription Plan</h2>
+                    <hr>
+                    <a href="{% url 'subscription-plans' %}" class="btn btn-outline-success btn-lg"> > view subscription
+                        plans </a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#deleteButton').on('click', function () {
+                $(this).text('Processing......')
+            })
+        })
+        $(document).ready(function () {
+            $('#updateButton').on('click', function () {
+                $(this).text('Processing......')
+            })
+        })
+    </script>
+
+{% endblock %}

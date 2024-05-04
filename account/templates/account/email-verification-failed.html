@@ -1,0 +1,24 @@
+{% extends 'account/layouts.html' %}
+{% block title %}
+    Email Verification Fail.
+{% endblock %}
+
+{% block content %}
+    <div id="page-content">
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-md-7">
+                    <h1 class="fw-light mt-4 text-dark"> Email Unverified!</h1>
+                    <p class="lead text-dark-50">
+                        Sorry, but your account was not verified.
+                    </p>
+                    <div class="text-center">
+                        <a href="{% url 'register' %}" class="btn btn-outline-success btn-lg"> Re-create your
+                            account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,84 @@
+{% extends 'client/layouts.html' %}
+{% block title %}
+    Client Dashboard
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-4 py-5  my-5 bg-white  rounded shadow text-center">
+                <h3>Subscription plans</h3>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-4 py-5  m-2 bg-white  rounded shadow text-center">
+                <h3>Standard subscription</h3>
+                <hr>
+                <p class="h6">
+                    Join us for standard access here :
+                </p>
+                <strong>(Limited article access) </strong>
+                <hr>
+
+
+                <div id="paypal-button-container-P-0V263541YJ847252NMYZWHEI"></div>
+                {#                Client Id#}
+                <script src="https://www.paypal.com/sdk/js?client-id=AS88XhceWTHbZ_4p9Lr32QGHbfJPUGyqoTsAymy98SxELYTW2JDOncMZzSOsvKhVXP9ZHTTBg_xaGFay&vault=true&intent=subscription"
+                        data-sdk-integration-source="button-factory"></script>
+                <script>
+                    paypal.Buttons({
+                        style: {
+                            shape: 'pill',
+                            color: 'silver',
+                            layout: 'vertical',
+                            label: 'subscribe'
+                        },
+                        createSubscription: function (data, actions) {
+                            return actions.subscription.create({
+                                /* Creates the subscription */
+                                plan_id: 'P-0V263541YJ847252NMYZWHEI'
+                            });
+                        },
+                        onApprove: function (data, actions) {
+                            // alert(data.subscriptionID); // You can add optional success message for the subscriber here
+                            let current_url = '/client/create-subscription/' + data.subscriptionID + '/Standard'
+                            window.open(current_url, '_self')
+                        }
+                    }).render('#paypal-button-container-P-0V263541YJ847252NMYZWHEI'); // Renders the PayPal button
+                </script>
+            </div>
+            <div class="col-4 py-5  m-2 bg-white  rounded shadow text-center">
+                <h3>Premium Subscription</h3>
+                <hr>
+                <p class="h6">
+                    Elevate your experience with premium here:
+                </p>
+                <strong>(Full article access) </strong>
+                <hr>
+                <div id="paypal-button-container-P-7G886984HF913452DMYZWIDQ"></div>
+                <script>
+                    paypal.Buttons({
+                        style: {
+                            shape: 'pill',
+                            color: 'gold',
+                            layout: 'vertical',
+                            label: 'subscribe'
+                        },
+                        createSubscription: function (data, actions) {
+                            return actions.subscription.create({
+                                /* Creates the subscription */
+                                plan_id: 'P-7G886984HF913452DMYZWIDQ'
+                            });
+                        },
+                        onApprove: function (data, actions) {
+                            {#alert(data.subscriptionID);#}
+                            // alert(data.subscriptionID); // You can add optional success message for the subscriber here
+                            let current_url = `/client/create-subscription/` + data.subscriptionID + '/Premium'
+                            window.open(current_url, '_self')
+                        }
+                    }).render('#paypal-button-container-P-7G886984HF913452DMYZWIDQ'); // Renders the PayPal button
+                </script>
+            </div>
+        </div>
+    </div>
+{% endblock %}

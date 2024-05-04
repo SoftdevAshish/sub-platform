@@ -1,0 +1,17 @@
+
+html,
+body {
+  height: 100%;
+}
+
+#page-content {
+  flex: 1 0 auto;
+}
+
+/* Other Classes for Page Styling */
+
+body {
+  /*background: rgb(0, 0, 0);*/
+  background: linear-gradient(to right, rgba(86, 90, 92, 0.33), rgba(86, 90, 92, 0.33));
+}
+

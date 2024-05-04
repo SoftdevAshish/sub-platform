@@ -1,0 +1,14 @@
+{% extends 'writer/layouts.html' %}
+{% block title %}
+    Writer Dashboard
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-4 py-5 border my-5  rounded shadow">
+               Welcome {{ user.first_name }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

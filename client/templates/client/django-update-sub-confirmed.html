@@ -1,0 +1,36 @@
+{% extends 'client/layouts.html' %}
+{% block title %}
+    Update Confirmed Subscription
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-4 py-5  my-5  rounded shadow text-center">
+                <h4>Application approve confirmed!</h4>
+                <br>
+                <br>
+                <h1> ✅ </h1>
+
+
+                <p>
+                    We're pleased to inform you that your request to update your subscription has been processed and
+                    approved on your account
+                </p>
+
+                <a href="{% url 'client-dashboard' %}" class="btn btn-outline-success btn-lg"> Return to
+                    Dashboard</a>
+            </div>
+        </div>
+    </div>
+    {#    <div class="container">#}
+    {#        <div class="row justify-content-center">#}
+    {#            <div class="col-4 py-5  my-1  rounded shadow text-center">#}
+    {#                <h4>Subscription Plan</h4><br>#}
+    {#                <p class="h5">#}
+    {#                    {{ SubPlan }}#}
+    {#                </p>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+{% endblock %}

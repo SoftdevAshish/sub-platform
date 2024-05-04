@@ -1,0 +1,49 @@
+{% extends 'writer/layouts.html' %}
+{% block title %}
+    My Article
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row ">
+            <div class="col py-5 my-5">
+                <div class="row justify-content-center">
+                    {% for article in AllArticles %}
+                        <div class="col-6  py-2  m-2   shadow">
+                            <h4>{{ article.title }}</h4>
+                            <p class="text-justify">
+                                {{ article.content }}
+                            </p>
+                            <p class="text-end h6">
+                                {% if article.is_premium is True %}
+                                    <strong> <span style="font-size: 20px">⭐</span> Premium</strong>
+                                {% endif %}
+
+                                {% if article.is_premium is False %}
+                                	 <strong>Standard</strong>
+                                {% endif %}
+
+                                <br>
+                                Date posted: {{ article.date_posted }}<br>
+                                last updated: {{ article.updated_posted }}
+                                <br>
+                                <br>
+                                <a class="btn btn-outline-primary" href="{% url 'update-article' article.id %}"> Update
+                                    Article</a>
+                            <form action="{% url 'delete-article' article.id %}" method="post" class="d-inline">
+                                {% csrf_token %}
+                                <div class="text-end ">
+
+                                    <input type="submit" class="btn btn-outline-danger" value="Delete Article">
+                                </div>
+                            </form>
+                            </p>
+
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
